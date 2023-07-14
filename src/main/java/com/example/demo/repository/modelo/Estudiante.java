@@ -31,6 +31,17 @@ public class Estudiante {
 
 	@Column(name = "estu_fecha_nacimiento")
 	private LocalDateTime fechaNacimiento;
+	
+	@Column(name = "estu_provincia")
+	private String privincia;
+
+	public String getPrivincia() {
+		return privincia;
+	}
+
+	public void setPrivincia(String privincia) {
+		this.privincia = privincia;
+	}
 
 	// GET & SET
 	public Integer getId() {
