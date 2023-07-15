@@ -27,28 +27,28 @@ public class EstudianteControllerRestful {
 	private IEstudianteService estudianteService;
 	
 	//GET
-	@GetMapping(path = "/buscar/{cedula}")
+	@GetMapping(path = "/{cedula}")
 	public Estudiante consultarPorCedula(@PathVariable String cedula) {
 		return this.estudianteService.consultarPorCedula(cedula);
 	}
 	
-	@PostMapping(path="/guardar")
+	@PostMapping
 	public void guardar(@RequestBody Estudiante estudiante) {
 		this.estudianteService.guardar(estudiante);
 	}
 	
-	@PutMapping(path="/actualizar/{identificador}")
+	@PutMapping(path="/{identificador}")
 	public void actializar(@RequestBody Estudiante estudiante,@PathVariable Integer identificador) {
 
 		estudiante.setId(identificador);
 		this.estudianteService.actualizar(estudiante);
 	}
 	
-	@PatchMapping(path="/actualizarParcial/{identificador}")
+	@PatchMapping(path="/{identificador}")
 	public void actualizarParcial(@RequestBody Estudiante estudiante, @PathVariable Integer identificador) {
 	
 		estudiante.setId(identificador);
-		
+		String cedula = "0054648648";
 		//Primera forma de actualizar
 
 		Estudiante estu1 = this.estudianteService.consultarPorCedula(estudiante.getCedula());
@@ -58,13 +58,13 @@ public class EstudianteControllerRestful {
 		
 	}
 	
-	@DeleteMapping(path="/borrar/{id}")
+	@DeleteMapping(path="/{id}")
 	public void borrar(@PathVariable Integer id) {
 		
 		this.estudianteService.eliminar(id);
 	}
 	
-	@GetMapping(path="/buscarTodos")
+	@GetMapping
 	public List<Estudiante> consultarTodos(@RequestParam String provincia){
 		
 		//buscarTodos?provincia=pichincha
