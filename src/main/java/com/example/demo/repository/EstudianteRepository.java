@@ -15,10 +15,8 @@ import jakarta.transaction.Transactional;
 @Repository
 @Transactional
 public class EstudianteRepository implements IEstudianteRepository {
-
 	@PersistenceContext
 	private EntityManager entityManager;
-
 	@Override
 	public Estudiante seleccionarPorCedula(String cedula) {
 		// TODO Auto-generated method stub
@@ -27,44 +25,35 @@ public class EstudianteRepository implements IEstudianteRepository {
 		myQuery.setParameter("datoCedula", cedula);
 		return myQuery.getSingleResult();
 	}
-
 	@Override
 	public void insertar(Estudiante estudiante) {
 		// TODO Auto-generated method stub
-
 		this.entityManager.persist(estudiante);
 	}
-
 	@Override
 	public void actualizar(Estudiante estudiante) {
 		// TODO Auto-generated method stub
 		this.entityManager.merge(estudiante);
 	}
-
 	@Override
 	public void actualizarParcial(String cedulaActual, String cedulaNueva) {
 		// TODO Auto-generated method stub
 		Query myQuery = this.entityManager
-				.createQuery("UPDATE Estudiante e SET e.cedula=: datoCedula WHERE e.cedula=: datoCondicion");
+				.createQuery("UPDATE Estudiante e SET e.cedula = :datoCedula WHERE e.cedula = :datoCondicion");
 		myQuery.setParameter("datoCedula", cedulaNueva);
 		myQuery.setParameter("datoCondicion", cedulaActual);
 		myQuery.executeUpdate();
-
 	}
-
 	@Override
 	public void borrar(Integer id) {
 		// TODO Auto-generated method stub
-
 		this.entityManager.remove(this.buscarPorId(id));
 	}
-
 	@Override
 	public Estudiante buscarPorId(Integer id) {
 		// TODO Auto-generated method stub
 		return this.entityManager.find(Estudiante.class, id);
 	}
-
 	@Override
 	public List<Estudiante> buscarTodos(String provincia) {
 		// TODO Auto-generated method stub
@@ -72,5 +61,4 @@ public class EstudianteRepository implements IEstudianteRepository {
 		myQuery.setParameter("datoProvincia", provincia);
 		return myQuery.getResultList();
 	}
-
 }

@@ -10,6 +10,7 @@ import com.example.demo.repository.modelo.Estudiante;
 
 @Service
 public class EstudianteService implements IEstudianteService {
+	
 	@Autowired
 	private IEstudianteRepository estudianteRepository;
 
@@ -29,6 +30,12 @@ public class EstudianteService implements IEstudianteService {
 	public void actualizar(Estudiante estudiante) {
 		// TODO Auto-generated method stub
 		this.estudianteRepository.actualizar(estudiante);
+	}
+
+	@Override
+	public void actualizarParcial(String cedulaActual, String cedulaNueva) {
+		// TODO Auto-generated method stub
+		this.estudianteRepository.actualizarParcial(cedulaActual, cedulaNueva);
 	}
 
 	@Override

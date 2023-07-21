@@ -12,6 +12,8 @@ public interface IEstudianteService {
 
 	public void actualizar(Estudiante estudiante);
 
+	public void actualizarParcial(String cedulaActual, String cedulaNueva);
+
 	public void borrar(Integer id);
 
 	public Estudiante buscarPorId(Integer id);
