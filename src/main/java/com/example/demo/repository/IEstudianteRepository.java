@@ -7,6 +7,7 @@ import com.example.demo.repository.modelo.Estudiante;
 public interface IEstudianteRepository {
 	
 	public Estudiante seleccionarPorCedula(String cedula);
+	
 	public void insertar(Estudiante estudiante);
 	
 	public void actualizar(Estudiante estudiante);
@@ -15,5 +16,7 @@ public interface IEstudianteRepository {
 	
 	public void borrar(Integer id);
 	
-	public List<Estudiante> buscarTodos();
+	public Estudiante buscarPorId (Integer id);
+	
+	public List<Estudiante> buscarTodos(String provincia);
 }
