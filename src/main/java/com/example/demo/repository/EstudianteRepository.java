@@ -61,4 +61,10 @@ public class EstudianteRepository implements IEstudianteRepository {
 		myQuery.setParameter("datoProvincia", provincia);
 		return myQuery.getResultList();
 	}
+	@Override
+	public List<Estudiante> buscarTodos() {
+		// TODO Auto-generated method stub
+		TypedQuery<Estudiante> myQuery = this.entityManager.createQuery("SELECT e FROM Estudiante e", Estudiante.class);
+		return myQuery.getResultList();
+	}
 }
