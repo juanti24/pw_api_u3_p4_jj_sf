@@ -3,9 +3,11 @@ package com.example.demo.service.to;
 import java.io.Serializable;
 import java.time.LocalDateTime;
 
+import org.springframework.hateoas.RepresentationModel;
+
 import jakarta.persistence.Column;
 
-public class EstudianteTO implements Serializable{
+public class EstudianteTO extends RepresentationModel<EstudianteTO> implements Serializable{
 	
 	private static final long serialVersionUID = 1L;
 	private Integer id;
